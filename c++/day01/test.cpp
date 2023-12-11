@@ -1,4 +1,5 @@
 #include "../utilities/FileReader.h"
+#include "../utilities/assert_with_print.h"
 #include "solution.h"
 #include <iostream>
 #include <cassert>
@@ -10,10 +11,18 @@ int main()
 
     // Example test
     const auto lines = fileReader.readLines();
-    assert(part1(lines) == 142);
+
+    int result1 = part1(lines);
+
+    // assertWithPrint(result1, 142, "result1");
+    int x = 42;
+    int y = 43;
+    ASSERT_WITH_PRINT(x, 42);
+    ASSERT_WITH_PRINT(y, 42);
     // assert(part2(lines) == 456);
 
-    std::cout << "Tests passed!" << std::endl;
+    std::cout
+        << "Tests passed!" << std::endl;
 
     return 0;
 }
