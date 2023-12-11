@@ -7,8 +7,8 @@
             "args": [
                 "-fdiagnostics-color=always",
                 "-g",
-                "..\\..\\utilities\\FileReader.cpp",
-                "..\\..\\day01\\solution.cpp",
+                "..\\utilities\\FileReader.cpp",
+                "solution.cpp",
                 "${file}",
                 "-o",
                 "${fileDirname}\\${fileBasenameNoExtension}.exe"

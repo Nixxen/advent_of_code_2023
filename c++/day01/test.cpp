@@ -1,5 +1,5 @@
-#include "../../utilities/FileReader.h"
-#include "../../day01/solution.h"
+#include "../utilities/FileReader.h"
+#include "solution.h"
 #include <iostream>
 #include <cassert>
 
