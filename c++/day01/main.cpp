@@ -7,6 +7,11 @@ int main()
     const std::string inputFilename = "../inputs/day01.txt";
     FileReader fileReader(inputFilename);
     const auto input = fileReader.readLines();
+    if (input.empty())
+    {
+        std::cerr << "Error reading input file: " << inputFilename << std::endl;
+        return 1;
+    }
 
     // Call the day01 functions
     std::cout << "Part 1: " << part1(input) << std::endl;
