@@ -26,6 +26,9 @@ int main()
     ASSERT_WITH_PRINT(convertAnyStringNumbers("seven"), "7");
     ASSERT_WITH_PRINT(convertAnyStringNumbers("eight"), "8");
     ASSERT_WITH_PRINT(convertAnyStringNumbers("nine"), "9");
+    ASSERT_WITH_PRINT(convertAnyStringNumbers("oneone"), "11");
+    ASSERT_WITH_PRINT(convertAnyStringNumbers("4nine"), "49");
+    ASSERT_WITH_PRINT(convertAnyStringNumbers("4nineeightseven2"), "49872");
     ASSERT_WITH_PRINT(convertAnyStringNumbers("abcone2threexyz"), "abc123xyz");
 
     // Test part 2
@@ -36,7 +39,7 @@ int main()
 
     int resultPart2 = part2(lines2);
 
-    ASSERT_WITH_PRINT(resultPart1, 281);
+    ASSERT_WITH_PRINT(resultPart2, 281);
 
     std::cout
         << "Tests passed!" << std::endl;

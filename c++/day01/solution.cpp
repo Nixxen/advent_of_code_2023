@@ -74,21 +74,15 @@ int part2(const std::vector<std::string> &input)
 
 std::string convertAnyStringNumbers(const std::string &line)
 {
-    std::string convertedLine = "";
     std::regex numberRegex("one|two|three|four|five|six|seven|eight|nine");
-    std::sregex_iterator currentMatch(line.begin(), line.end(), numberRegex);
-    std::sregex_iterator lastMatch;
-    int index = 0;
-    while (currentMatch != lastMatch)
+    std::smatch matches;
+    std::string convertedLine = line;
+    while (std::regex_search(convertedLine, matches, numberRegex))
     {
-        std::smatch match = *currentMatch;
-        std::string matchString = match.str();
-        int number = convertStringToDigits(matchString);
-        convertedLine += std::to_string(number);
-        index += matchString.size();
-        currentMatch++;
+        std::string match = matches.str();
+        int digit = convertStringToDigits(match);
+        convertedLine.replace(matches.position(), match.size(), std::to_string(digit));
     }
-    convertedLine += line.substr(index);
     return convertedLine;
 }
 
