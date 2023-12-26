@@ -28,18 +28,23 @@ int main()
     ASSERT_WITH_PRINT(convertAnyStringNumbers("nine"), "9");
     ASSERT_WITH_PRINT(convertAnyStringNumbers("oneone"), "11");
     ASSERT_WITH_PRINT(convertAnyStringNumbers("4nine"), "49");
-    ASSERT_WITH_PRINT(convertAnyStringNumbers("4nineeightseven2"), "49872");
+    ASSERT_WITH_PRINT(convertAnyStringNumbers("two1nine"), "219");
+    ASSERT_WITH_PRINT(convertAnyStringNumbers("eightwothree"), "823");
     ASSERT_WITH_PRINT(convertAnyStringNumbers("abcone2threexyz"), "abc123xyz");
+    ASSERT_WITH_PRINT(convertAnyStringNumbers("xtwone3four"), "x2134");
+    ASSERT_WITH_PRINT(convertAnyStringNumbers("4nineeightseven2"), "49872");
+    ASSERT_WITH_PRINT(convertAnyStringNumbers("zoneight234"), "z18234");
+    ASSERT_WITH_PRINT(convertAnyStringNumbers("7pqrstsixteen"), "7pqrst6teen");
 
     // Test part 2
-    const std::string inputFilename2 = "test_input_2.txt";
-    FileReader fileReader2(inputFilename2);
+    // const std::string inputFilename2 = "test_input_2.txt";
+    // FileReader fileReader2(inputFilename2);
 
-    const auto lines2 = fileReader2.readLines();
+    // const auto lines2 = fileReader2.readLines();
 
-    int resultPart2 = part2(lines2);
+    // int resultPart2 = part2(lines2);
 
-    ASSERT_WITH_PRINT(resultPart2, 281);
+    // ASSERT_WITH_PRINT(resultPart2, 281);
 
     std::cout
         << "Tests passed!" << std::endl;

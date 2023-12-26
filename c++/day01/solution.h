@@ -8,4 +8,5 @@ int part2(const std::vector<std::string> &input);
 int firstNumberFromBack(const std::string &line);
 int firstNumberFromFront(const std::string &line);
 int convertStringToDigits(const std::string &number);
+std::string convertAnyStringNumbersRegex(const std::string &line);
 std::string convertAnyStringNumbers(const std::string &line);

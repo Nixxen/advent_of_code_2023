@@ -66,17 +66,22 @@ int part2(const std::vector<std::string> &input)
         int firstNumber = firstNumberFromFront(convertedLine);
         int lastNumber = firstNumberFromBack(convertedLine);
         int twoDigitNumber = firstNumber * 10 + lastNumber;
+        std::cout << "Input: " << line << " | Converted: " << convertedLine << " | Two digit: " << twoDigitNumber << std::endl;
+
         sum += twoDigitNumber;
     }
 
     return sum;
 }
 
-std::string convertAnyStringNumbers(const std::string &line)
+// Regex solution. Works for tests, but overlapping letters in numbers causes issues.
+std::string convertAnyStringNumbersRegex(const std::string &line)
 {
     std::regex numberRegex("one|two|three|four|five|six|seven|eight|nine");
     std::smatch matches;
     std::string convertedLine = line;
+    size_t offset = 0;
+
     while (std::regex_search(convertedLine, matches, numberRegex))
     {
         std::string match = matches.str();
@@ -126,7 +131,35 @@ int convertStringToDigits(const std::string &stringNumber)
     }
     else
     {
-        // Throw
-        std::cerr << "Error: invalid string number: " << stringNumber << std::endl;
+        return -1;
     }
+}
+
+std::string convertAnyStringNumbers(const std::string &line)
+{
+    std::map<std::string, int> stringToDigit = {
+        {"one", 1}, {"two", 2}, {"three", 3}, {"four", 4}, {"five", 5}, {"six", 6}, {"seven", 7}, {"eight", 8}, {"nine", 9}};
+
+    std::string convertedLine;
+    int endReplace = 0; // Do not insert until i > endReplace
+    for (size_t i = 0; i < line.size(); i++)
+    {
+        bool replaced = false;
+        for (const auto &pair : stringToDigit)
+        {
+            const std::string &numberWord = pair.first;
+            if (line.substr(i, numberWord.size()) == numberWord)
+            {
+                convertedLine += std::to_string(pair.second);
+                endReplace = i + numberWord.size();
+                replaced = true;
+                break;
+            }
+        }
+        if (!replaced && (i >= endReplace))
+        {
+            convertedLine += line[i];
+        }
+    }
+    return convertedLine;
 }
